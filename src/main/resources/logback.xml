@@ -1,0 +1,26 @@
+<!-- ~ Copyright 2013-2019 BP&IT. -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="commonPattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+    <property name="commonCharset" value="UTF-8"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{REQUEST_ID} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--<logger name="org.apache.ignite.internal.processors.cache" level="DEBUG">-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
+
+    <!--<logger name="org.apache.ignite.spi.communication.tcp" level="DEBUG">-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
