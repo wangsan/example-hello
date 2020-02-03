@@ -21,6 +21,7 @@ import org.apache.ignite.compute.ComputeJobResult;
 import org.apache.ignite.compute.ComputeTaskAdapter;
 import org.apache.ignite.compute.ComputeTaskSplitAdapter;
 import org.apache.ignite.configuration.IgniteConfiguration;
+import org.apache.ignite.resources.IgniteInstanceResource;
 import org.junit.Test;
 
 import com.google.common.base.Stopwatch;
@@ -117,9 +118,14 @@ public class HelloIgniteTest {
 
             for (final String word : arg.split(" ")) {
                 jobs.add(new ComputeJobAdapter() {
+                    @IgniteInstanceResource
+                    private Ignite ignite;
+
                     @Override
                     public Object execute() {
-                        System.out.println(">>> Printing '" + word + "' on from compute job.");
+                        String nodeInfo = ignite.name() + Thread.currentThread().getName();
+                        System.out.println(nodeInfo + " >>> Printing '" + word + "' on from "
+                                                   + "compute job.");
 
                         // Return number of letters in the word.
                         return word.length();
@@ -199,6 +205,7 @@ public class HelloIgniteTest {
                     @Override
                     public Object execute() {
                         try {
+                            System.out.println(Thread.currentThread().getName() + "  working ");
                             TimeUnit.SECONDS.sleep(2);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
