@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package service;
+option java_package = "com.wangsan.study.protobuf";
+option java_outer_classname = "TestMessage";
+
+message SetRequest {
+    string key = 1;
+    string value = 2;
+}
+
+message SetResponse {
+    bool success = 1;
+}
+
+message GetRequest {
+    string key = 1;
+}
+
+message GetResponse {
+    string value = 1;
+}
+
+message DateRequest {
+
+}
+
+message DateResponse {
+    int32 date = 1;
+}

@@ -64,6 +64,7 @@ public class GradientDescent {
         return sum;
     }
 
+    // 可以换成求平均值
     public double da(double a, double b, double[] xs, double[] ys) {
         double sum = 0.0;
         for (int i = 0; i < xs.length; i++) {
