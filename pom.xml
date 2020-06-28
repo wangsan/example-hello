@@ -201,6 +201,13 @@
             <version>${jprotobuf.version}</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>

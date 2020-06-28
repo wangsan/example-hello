@@ -33,9 +33,8 @@ public class StuffTest {
         ProtostuffIOUtil.mergeFrom(result, to, schema);
         System.out.println(to);
 
-        // null
-        ProtostuffIOUtil.toByteArray(null,schema,LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
-
+        // null will make jvm crash
+        //ProtostuffIOUtil.toByteArray(null,schema,LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
 
         // proto buf
         LinkedBuffer buffer2 = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);

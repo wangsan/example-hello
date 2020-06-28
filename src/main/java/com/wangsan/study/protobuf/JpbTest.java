@@ -14,6 +14,8 @@ import com.baidu.bjf.remoting.protobuf.ProtobufProxy;
  */
 public class JpbTest {
     public static void main(String[] args) throws IOException {
+        String code = ProtobufIDLGenerator.getIDL(JpbData.class);
+        System.out.println(code);
 
         Codec<JpbData> simpleTypeCodec = ProtobufProxy.create(JpbData.class);
 
@@ -27,8 +29,10 @@ public class JpbTest {
         JpbData to = simpleTypeCodec.decode(bb);
         System.out.println(to);
 
-        String code = ProtobufIDLGenerator.getIDL(JpbData.class);
-        System.out.println(code);
+        // null
+        JpbData nullDecode = simpleTypeCodec.decode(null);
+
+
 
         File path = new File("/Users/wangqingpeng/git/wangsangit/example/src/main/jprotopath");
         ProtobufProxy.enableCache(false);
